@@ -102,7 +102,7 @@ public class Print {
 	
 	public static final void maximized() { 
 		System.out.print(Parser.newlines); 
-		for (int currentY = 0; currentY < 61 && currentY < Textart.canvasSize; currentY++) { 
+		for (int currentY = 0; currentY < 51 && currentY < Textart.canvasSize; currentY++) { 
 			for (int currentX = 0; currentX < 209 && currentX < Textart.canvasSize; currentX++) { 
 				if (Textart.canvasColor[currentY][currentX] == 'g') { 
 					System.out.print(Color.GREEN + Textart.canvasCharacter[currentY][currentX]); 
