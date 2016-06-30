@@ -5,15 +5,17 @@ import java.util.*;
 
 public class Textart { 
 	
-	public static boolean maximized = false;
+	public static boolean maximized = false; 
 	public static short canvasSize = -1; 
 	public static char[][] canvasColor; 
 	public static char[][] canvasCharacter; 
 
 	public static final void main(String[] args) { 
-		if (args.length > 0) {
-			maximized = true;
-		}
+		if (args.length > 0) { 
+			if (args[0].startsWith("max")) { 
+				maximized = true; 
+			} 
+		} 
 		boolean doThings = true; 
 		System.out.println(" \nText-based ASCII art painter via shapes, supporting various colors and characters. "); 
 		System.out.println("Created by Aaron Franke. "); 
@@ -54,10 +56,11 @@ public class Textart {
 		//Loop Below, Above is one-time run code.
 		 
 		while (doThings) { 
+			System.out.print("Available commands: square, rectangle, diamond, circle, fill, print, exit. "); 
 			System.out.print("What do you want to do or draw? "); 
 			String response = Parser.keyboard.next(); 
 			response = response.toLowerCase(); 
-			if (response.startsWith("rec")) { //This ends the loop. 
+			if (response.startsWith("rec")) {  
 				Draw.rect(); 
 				Print.wide(maximized); 
 			} else if (response.startsWith("s")) { 
@@ -77,7 +80,7 @@ public class Textart {
 				Print.wide(maximized); 
 			} else if (response.startsWith("pr")) { 
 				Print.decide();
-			} else if (response.startsWith("ex") || response.startsWith("q") || response.startsWith("en") || response.startsWith("re")) { 
+			} else if (response.startsWith("ex") || response.startsWith("q") || response.startsWith("en") || response.startsWith("re")) { //This ends the loop.
 				Print.wide(maximized); 
 				System.out.println("Restarting program... "); 
 				doThings = false; 
@@ -96,10 +99,10 @@ public class Textart {
 		//Parser.keyboard.close(); 
 		//System.out.print(newlines); 
 		
-		if (args.length == 0) { 
-			main(new String[]{}); 
+		if (maximized) { 
+			main(new String[]{"max"}); 
 		} else { 
-			main(new String[]{"terminal"}); 
+			main(new String[]{}); 
 		} 
 	} 
 
