@@ -4,7 +4,7 @@ package textart;
 public class Color { 
 	
 	public static final void list() { 
-		System.out.println(Color.RED + "Red, " + Color.GREEN + "Green, " + Color.BLUE + "Blue, " + Color.BLACK + "Black, " + Color.WHITE + "White, " + Color.CYAN + "Cyan, " + Color.YELLOW + "Yellow, " + Color.RESET + "or "+ Color.MAGENTA + "Magenta. "); 
+		System.out.println(Color.RED + "Red, " + Color.GREEN + "Green, " + Color.BLUE + "Blue, " + Color.BLACK + "Black, " + Color.WHITE + "White, " + Color.CYAN + "Cyan, " + Color.YELLOW + "Yellow/Orange, " + Color.RESET + "or "+ Color.MAGENTA + "Magenta. "); 
 	} 
 	
 	public static final String RESET = "\u001B[0m"; 
