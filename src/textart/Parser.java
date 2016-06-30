@@ -189,6 +189,9 @@ public class Parser {
 			} else if (input.startsWith("m")) { //Magenta 
 				invalid = false; 
 				character = 'm'; 
+			} else if (input.startsWith("o")) { //Orange 
+				invalid = false; 
+				character = 'y'; 
 			} else if (input.startsWith("y")) { //Yellow 
 				invalid = false; 
 				character = 'y'; 
