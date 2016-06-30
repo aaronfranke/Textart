@@ -56,7 +56,7 @@ public class Textart {
 		//Loop Below, Above is one-time run code.
 		 
 		while (doThings) { 
-			System.out.print("Available commands: square, rectangle, diamond, circle, fill, print, exit. "); 
+			System.out.println("Available commands: square, rectangle, diamond, circle, fill, print, exit. "); 
 			System.out.print("What do you want to do or draw? "); 
 			String response = Parser.keyboard.next(); 
 			response = response.toLowerCase(); 
