@@ -26,22 +26,23 @@ public class Draw extends Shapes {
 				System.out.println("Out of bounds! "); 
 			} 
 		} 
-		System.out.print(Color.RESET + "What character should be used? ");
+		System.out.print(Colors.RESET + "What character should be used? ");
 		character = Parser.character();
-		Color.list();
-		System.out.print(Color.RESET + "What color should it be? "); 
+		Colors.list();
+		System.out.print(Colors.RESET + "What color should it be? "); 
 		color = Parser.color(); 
 		
 		point(X, Y, color, character); 
 	} 
 	
+	
 	public static final void fill() { 
 		char color = 's', character = '#'; 
-		System.out.print(Color.RESET + "Filling the entire world with what you specify next. "); 
-		System.out.print(Color.RESET + "What character should be used? ");
+		System.out.print(Colors.RESET + "Filling the entire world with what you specify next. "); 
+		System.out.print(Colors.RESET + "What character should be used? ");
 		character = Parser.character();
-		Color.list();
-		System.out.print(Color.RESET + "What color should it be? "); 
+		Colors.list();
+		System.out.print(Colors.RESET + "What color should it be? "); 
 		color = Parser.color(); 
 		
 		for (char[] world : Textart.canvasColor) { 
@@ -52,6 +53,69 @@ public class Draw extends Shapes {
 			Arrays.fill(world, character); 
 		}
 	} 
+	
+	
+	public static final void copy() {
+		short X1 = -1, Y1 = -1, X2 = -1, Y2 = -1, X3 = -1, Y3 = -1;
+
+		while (X1 < 0 || X1 > Textart.canvasSize - 1) { 
+			System.out.print("What is the left side's coordinate of the region you want to copy? "); 
+			X1 = (short)(Parser.integer16() - 1); 
+			if (X1 < 0) { 
+				System.out.println("Out of bounds! "); 
+			} else if (X1 > Textart.canvasSize) { 
+				System.out.println("Out of bounds! "); 
+			} 
+		} 
+		while (X2 < 0 || X2 > Textart.canvasSize - 1) { 
+			System.out.print("What is the right side's coordinate of the region you want to copy? "); 
+			X2 = (short)(Parser.integer16() - 1); 
+			if (X2 < 0) { 
+				System.out.println("Out of bounds! "); 
+			} else if (X2 > Textart.canvasSize) { 
+				System.out.println("Out of bounds! "); 
+			}
+		}
+		while (Y1 < 0 || Y1 > Textart.canvasSize - 1) { 
+			System.out.print("What is the top side's coordinate of the region you want to copy? "); 
+			Y1 = (short)(Parser.integer16() - 1); 
+			if (Y1 < 1) { 
+				System.out.println("Out of bounds! "); 
+			} else if (Y1 > Textart.canvasSize) { 
+				System.out.println("Out of bounds! "); 
+			} 
+		} 
+		while (Y2 < 0 || Y2 > Textart.canvasSize - 1) { 
+			System.out.print("What is the bottom side's coordinate of the region you want to copy? "); 
+			Y2 = (short)(Parser.integer16() - 1); 
+			if (Y2 < 1) { 
+				System.out.println("Out of bounds! "); 
+			} else if (Y2 > Textart.canvasSize) { 
+				System.out.println("Out of bounds! "); 
+			} 
+		} 
+		while (X3 < 0 || X3 > Textart.canvasSize - 1) { 
+			System.out.print("What is the left side's coordinate of the position to copy the region to? "); 
+			X3 = (short)(Parser.integer16() - 1); 
+			if (X3 < 1) { 
+				System.out.println("Out of bounds! "); 
+			} else if (X3 > Textart.canvasSize) { 
+				System.out.println("Out of bounds! "); 
+			} 
+		} 
+		while (Y3 < 0 || Y3 > Textart.canvasSize - 1) { 
+			System.out.print("What is the top side's coordinate of the position to copy the region to? "); 
+			Y3 = (short)(Parser.integer16() - 1); 
+			if (Y3 < 1) { 
+				System.out.println("Out of bounds! "); 
+			} else if (Y3 > Textart.canvasSize) { 
+				System.out.println("Out of bounds! "); 
+			} 
+		} 
+		System.out.println("Copying... ");
+		copy(X1, Y1, X2, Y2, X3, Y3);
+	}
+	
 	
 	public static final void square() { 
 		short size = 0, X = -1, Y = -1; 
@@ -92,14 +156,15 @@ public class Draw extends Shapes {
 				System.out.println("Out of bounds! "); 
 			} 
 		} 
-		System.out.print(Color.RESET + "What character should be used? ");
+		System.out.print(Colors.RESET + "What character should be used? ");
 		character = Parser.character(); 
-		Color.list();
-		System.out.print(Color.RESET + "What color should it be? "); 
+		Colors.list();
+		System.out.print(Colors.RESET + "What color should it be? "); 
 		color = Parser.color(); 
 		
 		square(X, Y, size, color, character); 
 	} 
+	
 	
 	public static final void rect() { 
 		short X1 = -1, X2 = -1, Y1 = -1, Y2 = -1; 
@@ -140,10 +205,10 @@ public class Draw extends Shapes {
 				System.out.println("Out of bounds! "); 
 			} 
 		} 
-		System.out.print(Color.RESET + "What character should be used? ");
+		System.out.print(Colors.RESET + "What character should be used? ");
 		character = Parser.character();
-		Color.list();
-		System.out.print(Color.RESET + "What color should it be?"); 
+		Colors.list();
+		System.out.print(Colors.RESET + "What color should it be?"); 
 		color = Parser.color(); 
 		
 		rect(X1, Y1, X2, Y2, color, character); 
@@ -155,8 +220,8 @@ public class Draw extends Shapes {
 		float Xradius = 0, Yradius = 0; 
 		char color = 's', character = '#'; 
 		while (Xradius < 1 || Xradius > Textart.canvasSize || Xradius > 10000) { 
-			System.out.print("How wide should the diamond be (radius)? "); 
-			Xradius = Parser.floating32(); 
+			System.out.print("How wide should the diamond be (radius/1.75)? "); 
+			Xradius = Parser.floating32()*(float)1.75; 
 			if (Xradius < 1) { 
 				System.out.println("Too small! "); 
 			} else if (Xradius > Textart.canvasSize || Xradius > 10000) { 
@@ -190,10 +255,10 @@ public class Draw extends Shapes {
 				System.out.println("Out of bounds! "); 
 			} 
 		} 
-		System.out.print(Color.RESET + "What character should be used? ");
+		System.out.print(Colors.RESET + "What character should be used? ");
 		character = Parser.character();
-		Color.list();
-		System.out.print(Color.RESET + "What color should it be? "); 
+		Colors.list();
+		System.out.print(Colors.RESET + "What color should it be? "); 
 		color = Parser.color(); 
 
 		diamond(X, Y, Xradius, Yradius, color, character); 
@@ -231,10 +296,10 @@ public class Draw extends Shapes {
 				System.out.println("Out of bounds! "); 
 			} 
 		} 
-		System.out.print(Color.RESET + "What character should be used? ");
+		System.out.print(Colors.RESET + "What character should be used? ");
 		character = Parser.character();
-		Color.list();
-		System.out.print(Color.RESET + "What color should it be? "); 
+		Colors.list();
+		System.out.print(Colors.RESET + "What color should it be? "); 
 		color = Parser.color(); 
 
 		circle(X, Y, radius, color, character); 

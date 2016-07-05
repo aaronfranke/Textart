@@ -9,6 +9,7 @@ public class Textart {
 	public static short canvasSize = -1; 
 	public static char[][] canvasColor; 
 	public static char[][] canvasCharacter; 
+	public static char[][] canvasBuffer; 
 
 	public static final void main(String[] args) { 
 		if (args.length > 0) { 
@@ -17,17 +18,18 @@ public class Textart {
 			} 
 		} 
 		boolean doThings = true; 
+		
 		System.out.println(" \nText-based ASCII art painter via shapes, supporting various colors and characters. "); 
-		System.out.println("Created by Aaron Franke. "); 
-		System.out.println("\n "); 
+		System.out.println("Note: For the circle, square, and diamond, the X-axis is expanded by 1.75x. "); 
+		System.out.println("Created by Aaron Franke. \n "); 
 		//Code to select a world size below. Useless if the below worldSize= line is uncommented. 
 		
 		while (canvasSize > 10000 || canvasSize < 2) { 
-			System.out.print("How big should the canvas be? "); 
+			System.out.print("\nIf unsure, try 200. \nHow big should the canvas be? "); 
 			short input = Parser.integer16(); 
 			if (input > 10001) { 
 				System.out.println("That's too big! The canvas needs to be less than ten thousand units. "); 
-			} else if (input < 2) { 
+			} else if (input < 5) { 
 				System.out.println("That's too small! "); 
 			} else { 
 				canvasSize = (short)input; 
@@ -38,6 +40,7 @@ public class Textart {
 		
 		canvasColor = new char[canvasSize][canvasSize]; 
 		canvasCharacter = new char[canvasSize][canvasSize]; 
+		canvasBuffer = new char[canvasSize][canvasSize]; 
 		
 		for (char[] canvas : canvasColor) { 
 			Arrays.fill(canvas, 'g'); 
@@ -56,7 +59,7 @@ public class Textart {
 		//Loop Below, Above is one-time run code.
 		 
 		while (doThings) { 
-			System.out.println("Available commands: square, rectangle, diamond, circle, fill, print, exit. "); 
+			System.out.println("Available commands: square, rectangle, diamond, circle, point, fill, copy, print, restart. "); 
 			System.out.print("What do you want to do or draw? "); 
 			String response = Parser.keyboard.next(); 
 			response = response.toLowerCase(); 
@@ -69,8 +72,11 @@ public class Textart {
 			} else if (response.startsWith("d")) { 
 				Draw.diamond(); 
 				Print.wide(maximized); 
-			} else if (response.startsWith("c")) { 
+			} else if (response.startsWith("ci")) { 
 				Draw.circle(); 
+				Print.wide(maximized); 
+			} else if (response.startsWith("c")) { 
+				Draw.copy(); 
 				Print.wide(maximized); 
 			} else if (response.startsWith("po")) { 
 				Draw.point(); 

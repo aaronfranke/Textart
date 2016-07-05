@@ -16,8 +16,13 @@ public class Parser {
 		while (invalid) { 
 			String input = keyboard.next(); 
 			if (input.matches("\\d+")){ 
-				number = Long.parseLong(input); 
 				invalid = false; 
+				try { 
+					number = Long.parseLong(input); 
+				} catch (java.lang.NumberFormatException e) { 
+					invalid = true;
+					System.out.println("Are you trying to break the program? ");
+				} 
 			} else { 
 				System.out.println("That's not a whole number! "); 
 				System.out.print("Try again: "); 
@@ -28,11 +33,18 @@ public class Parser {
 	
 	public static final int integer32() { //Returns whole numbers up to about 2 billion but can handle user inputs of up to 9 quintillion. 
 		boolean invalid = true; 
+		long inputNumber = 2147483601;
 		int number = 0; 
 		while (invalid) { 
 			String input = keyboard.next(); 
 			if (input.matches("\\d+")){ 
-				long inputNumber = Long.parseLong(input); 
+				invalid = false; 
+				try { 
+					inputNumber = Long.parseLong(input); 
+				} catch (java.lang.NumberFormatException e) { 
+					invalid = true;
+					System.out.println("Are you trying to break the program? ");
+				} 
 				if (inputNumber < 2147483600) { 
 					invalid = false; 
 					number = (int)inputNumber; 
@@ -114,7 +126,7 @@ public class Parser {
 		while (invalid) { 
 			String input = keyboard.next(); 
 			if (Pattern.matches(decimalPattern, input) || input.matches("\\d+")){ 
-				number = Float.parseFloat(input); 
+				number = Double.parseDouble(input); 
 				invalid = false; 
 			} else { 
 				System.out.println("That's not a number! "); 
@@ -168,7 +180,7 @@ public class Parser {
 			if (input.equals("reset")) { //Default color 
 				invalid = false; 
 				character = 's'; 
-			} else if (input.equals("black") || input.startsWith("k")) { //Black 
+			} else if (input.startsWith("bla) || input.startsWith("k")) { //Black 
 				invalid = false; 
 				character = 'k'; 
 			} else if (input.startsWith("r")) { //Red 

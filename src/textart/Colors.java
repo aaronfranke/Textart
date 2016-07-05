@@ -1,10 +1,10 @@
 
 package textart; 
 
-public class Color { 
+public class Colors { 
 	
 	public static final void list() { 
-		System.out.println(Color.RED + "Red, " + Color.GREEN + "Green, " + Color.BLUE + "Blue, " + Color.BLACK + "Black, " + Color.WHITE + "White, " + Color.CYAN + "Cyan, " + Color.YELLOW + "Yellow/Orange, " + Color.RESET + "or "+ Color.MAGENTA + "Magenta. "); 
+		System.out.println(Colors.RED + "Red, " + Colors.GREEN + "Green, " + Colors.BLUE + "Blue, " + Colors.BLACK + "Black, " + Colors.WHITE + "White, " + Colors.CYAN + "Cyan, " + Colors.YELLOW + "Yellow/Orange, " + Colors.RESET + "or "+ Colors.MAGENTA + "Magenta. "); 
 	} 
 	
 	public static final String RESET = "\u001B[0m"; 
