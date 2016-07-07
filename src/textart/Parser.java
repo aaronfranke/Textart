@@ -5,9 +5,8 @@ import java.util.Scanner;
 import java.util.regex.*; 
 
 public class Parser { 
-	
+	 
 	public static final String decimalPattern = "([0-9]*)\\.([0-9]*)"; 
-	public static final String newlines = "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n";
 	public static final Scanner keyboard = new Scanner(System.in); 
 	
 	public static final  long integer64() { //Returns whole numbers up to about 9 quintillion. 
@@ -15,13 +14,13 @@ public class Parser {
 		long number = 0; 
 		while (invalid) { 
 			String input = keyboard.next(); 
-			if (input.matches("\\d+")){ 
+			if (input.matches("\\d+") || input.matches("-\\d+")){ 
 				invalid = false; 
 				try { 
 					number = Long.parseLong(input); 
 				} catch (java.lang.NumberFormatException e) { 
-					invalid = true;
-					System.out.println("Are you trying to break the program? ");
+					invalid = true; 
+					System.out.print("Are you trying to break the program? Try again: "); 
 				} 
 			} else { 
 				System.out.println("That's not a whole number! "); 
@@ -31,73 +30,60 @@ public class Parser {
 		return number; 
 	} 
 	
-	public static final int integer32() { //Returns whole numbers up to about 2 billion but can handle user inputs of up to 9 quintillion. 
+	public static final int integer32() { //Returns whole numbers up to about 2 billion. Depends on integer64(). 
 		boolean invalid = true; 
-		long inputNumber = 2147483601;
 		int number = 0; 
 		while (invalid) { 
-			String input = keyboard.next(); 
-			if (input.matches("\\d+")){ 
+			long inputNumber = integer64();
+			if (inputNumber < 2147483601 && inputNumber > -2147483601) { 
 				invalid = false; 
-				try { 
-					inputNumber = Long.parseLong(input); 
-				} catch (java.lang.NumberFormatException e) { 
-					invalid = true;
-					System.out.println("Are you trying to break the program? ");
-				} 
-				if (inputNumber < 2147483600) { 
-					invalid = false; 
-					number = (int)inputNumber; 
-				} else { 
-					System.out.println("That's too big! "); 
-					System.out.print("Try again: "); 
-				} 
+				number = (int)inputNumber; 
 			} else { 
-				System.out.println("That's not a whole number! "); 
+				if (inputNumber > 2147483601) { 
+					System.out.println("That's too big! "); 
+				} else { 
+					System.out.println("That's too small! "); 
+				} 
 				System.out.print("Try again: "); 
 			} 
 		} 
 		return number; 
 	} 
 	
-	public static final short integer16() { //Returns whole numbers up to about 30 thousand but can handle user inputs of up to 9 quintillion. 
+	public static final short integer16() { //Returns whole numbers up to about 30 thousand. Depends on integer64(). 
 		boolean invalid = true; 
 		short number = 0; 
 		while (invalid) { 
-			String input = keyboard.next(); 
-			if (input.matches("\\d+")){ 
-				long inputNumber = Long.parseLong(input); 
-				if (inputNumber < 32760) { 
-					invalid = false; 
-					number = (short)inputNumber; 
-				} else { 
-					System.out.println("That's too big! "); 
-					System.out.print("Try again: "); 
-				} 
+			long inputNumber = integer64();
+			if (inputNumber < 32761 && inputNumber > -32761) { 
+				invalid = false; 
+				number = (short)inputNumber; 
 			} else { 
-				System.out.println("That's not a whole number! "); 
+				if (inputNumber > 32761) { 
+					System.out.println("That's too big! "); 
+				} else { 
+					System.out.println("That's too small! "); 
+				} 
 				System.out.print("Try again: "); 
 			} 
 		} 
 		return number; 
 	} 
 
-	public static final byte integer8() { //Returns whole numbers up to 125 but can handle user inputs of up to 9 quintillion. 
+	public static final byte integer8() { //Returns whole numbers up to 125. Depends on integer64(). 
 		boolean invalid = true; 
 		byte number = 0; 
 		while (invalid) { 
-			String input = keyboard.next(); 
-			if (input.matches("\\d+")){ 
-				long inputNumber = Long.parseLong(input); 
-				if (inputNumber < 126) { 
-					invalid = false; 
-					number = (byte)inputNumber; 
-				} else { 
-					System.out.println("That's too big! "); 
-					System.out.print("Try again: "); 
-				} 
+			long inputNumber = integer64();
+			if (inputNumber < 126 && inputNumber > -126) { 
+				invalid = false; 
+				number = (byte)inputNumber; 
 			} else { 
-				System.out.println("That's not a whole number! "); 
+				if (inputNumber > 126) { 
+					System.out.println("That's too big! "); 
+				} else { 
+					System.out.println("That's too small! "); 
+				} 
 				System.out.print("Try again: "); 
 			} 
 		} 
@@ -180,7 +166,7 @@ public class Parser {
 			if (input.equals("reset")) { //Default color 
 				invalid = false; 
 				character = 's'; 
-			} else if (input.startsWith("bla) || input.startsWith("k")) { //Black 
+			} else if (input.startsWith("black") || input.startsWith("k")) { //Black 
 				invalid = false; 
 				character = 'k'; 
 			} else if (input.startsWith("r")) { //Red 

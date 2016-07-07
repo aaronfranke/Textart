@@ -3,6 +3,8 @@ package textart;
 
 public class Print { 
 	
+	public static final String newlines = "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n";
+	
 	public static final void decide() {
 		System.out.print("What do you want to print? "); 
 		String responseToPrint = Parser.keyboard.next(); 
@@ -35,7 +37,7 @@ public class Print {
 	} 
 	
 	public static final void all() { 
-		System.out.print(Parser.newlines); 
+		System.out.print(newlines); 
 		for (short currentY = 0; currentY < Textart.canvasSize; currentY++) { 
 			for (short currentX = 0; currentX < Textart.canvasSize; currentX++) { 
 				if (Textart.canvasColor[currentY][currentX] == 'g') { 
@@ -72,7 +74,7 @@ public class Print {
 	}
 	
 	public static final void widee() { 
-		System.out.print(Parser.newlines); 
+		System.out.print(newlines); 
 		for (int currentY = 0; currentY < 21 && currentY < Textart.canvasSize; currentY++) { 
 			for (int currentX = 0; currentX < 79 && currentX < Textart.canvasSize; currentX++) { 
 				if (Textart.canvasColor[currentY][currentX] == 'g') { 
@@ -101,7 +103,7 @@ public class Print {
 	} 
 	
 	public static final void maximized() { 
-		System.out.print(Parser.newlines); 
+		System.out.print(newlines); 
 		for (int currentY = 0; currentY < 51 && currentY < Textart.canvasSize; currentY++) { 
 			for (int currentX = 0; currentX < 209 && currentX < Textart.canvasSize; currentX++) { 
 				if (Textart.canvasColor[currentY][currentX] == 'g') { 
@@ -130,7 +132,7 @@ public class Print {
 	} 
 	
 	public static final void part(short X1, short Y1, short X2, short Y2) { 
-		System.out.print(Parser.newlines); 
+		System.out.print(newlines); 
 		for (short currentY = Y1; currentY <= Y2; currentY++) { 
 			for (short currentX = X1; currentX <= X2; currentX++) { 
 				if (Textart.canvasColor[currentY][currentX] == 'g') { 
