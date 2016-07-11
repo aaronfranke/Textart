@@ -5,7 +5,8 @@ public class Print {
 	
 	public static final String newlines = "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n";
 	
-	public static final void decide() {
+	public static final void decide() { 
+		System.out.println("Available commands: all, wide, part. "); 
 		System.out.print("What do you want to print? "); 
 		String responseToPrint = Parser.keyboard.next(); 
 		responseToPrint = responseToPrint.toLowerCase(); 
