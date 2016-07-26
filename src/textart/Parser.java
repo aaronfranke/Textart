@@ -9,7 +9,7 @@ public class Parser {
 	public static final String decimalPattern = "([0-9]*)\\.([0-9]*)"; 
 	public static final Scanner keyboard = new Scanner(System.in); 
 	
-	public static final  long integer64() { //Returns whole numbers up to about 9 quintillion. 
+	public static final long integer64() { //Returns whole numbers up to about 9 quintillion. 
 		boolean invalid = true; 
 		long number = 0; 
 		while (invalid) { 
