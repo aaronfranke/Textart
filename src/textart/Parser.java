@@ -166,7 +166,7 @@ public class Parser {
 			if (input.equals("reset")) { //Default color 
 				invalid = false; 
 				character = 's'; 
-			} else if (input.startsWith("black") || input.startsWith("k")) { //Black 
+			} else if (input.startsWith("bla") || input.startsWith("k")) { //Black 
 				invalid = false; 
 				character = 'k'; 
 			} else if (input.startsWith("r")) { //Red 
