@@ -1,5 +1,5 @@
 
-// Parser.java - Obtain console input safely, without any crashing. Suppers all integer types, both float types, non-numeric text, single characters, and colors.
+// Parser.java - Obtain console input safely, without any crashing. Supports all integer types, both float types, non-numeric text, single characters, and colors.
 
 package textart; 
 
