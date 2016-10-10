@@ -1,5 +1,5 @@
 
-// Parser.java - Obtain console input safely, without any crashing. 
+// Parser.java - Obtain input safely, without any crashing. 
 // Supports all integer types, both float types, non-numeric text, single characters, and colors.
 // Supports both direct console input and parsing of existing strings (for most types). 
 
