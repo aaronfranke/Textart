@@ -22,6 +22,7 @@ public class Textart {
 		System.out.println(" \nText-based ASCII art painter via shapes, supporting various colors and characters. "); 
 		System.out.println("Note: For the circle, square, and diamond, the X-axis is expanded by 1.75x. "); 
 		System.out.println("Created by Aaron Franke. \n "); 
+		
 		//Code to select a world size below. Useless if the below worldSize= line is uncommented. 
 		
 		while (canvasSize > 10000 || canvasSize < 2) { 
